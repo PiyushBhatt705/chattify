@@ -20,9 +20,13 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "http://localhost:5173",
-    credentials: true,
-  })
+  origin: [
+    "http://localhost:5173",
+    "https://chattify-zoer.onrender.com"
+  ],
+  credentials: true
+})
+
 );
 
 app.use("/api/auth", authRoutes);
@@ -35,6 +39,10 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
   });
 }
+
+app.get("/", (req, res) => {
+  res.send("API is running...");
+});
 
 server.listen(PORT, () => {
   console.log("server is running on PORT:" + PORT);
