@@ -22,7 +22,7 @@ app.use(
   cors({
   origin: [
     "http://localhost:5173",
-    "https://chattify-zoer.onrender.com"
+    "https://backendforchattify.onrender.com"
   ],
   credentials: true
 })
